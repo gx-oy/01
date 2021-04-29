@@ -19,7 +19,7 @@ class Person
         return;
       }
       cout<<"age:"<<p_age<<endl;//在这里我们用到了p_age这个成员变量，其实这里默认是cout<<"age:"<<this->p_age<<endl;
-      //我们已知this是指向一个对象实体的，但是在t1()函数中，我们没有创建Person对象，只创建了一个空指针，此时相当于this=NULL；还用this去访问对象里的属性，当然会出错
+      //我们已知this是指向一个对象实体的，但是在t1()函数中，我们没有创建Person对象，只创建了一个空指针，此时相当于 this=NULL（当然了，这个语句是不允许出现在成员函数中的，具体原因35.cpp有讲）；还用this去访问对象里的属性，当然会出错
     }
     int p_age;
 };
