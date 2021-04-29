@@ -1,4 +1,5 @@
 /*const 修饰成员函数*/
+
 #include<iostream>
 using namespace std;
 /*
@@ -17,17 +18,31 @@ using namespace std;
 class Person
 {
   public:
-    //this 指针的本质：指针常量；指针常量的指向是不可以更改的
-    void shoename() const
+    //this 指针的本质：指针常量；指针常量的指向是不可以更改的，指针指向的值是可以改变的。
+    void shoename() const //加了后面这个const，就相当于const Person* const this;也就是说后面这个const起始修饰的是this 指针
     {
       //this->p_age=100;//当在函数后面加了const，这一行会报错，此时这是一个常函数
+      this->p_b=100;//此时不会报错，因为在p_b的声明前加了 mutable
     }
+  void hanshi()
+  {
+    
+  }
     int p_age;
+    mutable int p_b;
 };
 
 void t1()
 {
-  
+  Person p1;
+  p.shoename();
+}
+void t2()
+{
+  const Person p;//常对象
+  p.p_a=100;//会报错
+  p.p_b=100;//不会报错
+  p.hanshu();//此时报错，因为常对象只能调用常函数，因为在非 常函数中是默认允许修改对象属性值的，而常对象却不允许，如果常对象调用非 常函数，有点自相矛盾的意思了
 }
 int main()
 {
